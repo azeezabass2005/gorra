@@ -3,31 +3,146 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: 0 0% 100%;
+  --foreground: 0 0% 35%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+
+  --primary: 213 27% 29%;
+  --primary-foreground: 0 0% 98%;
+
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+
+  --radius: 0.5rem;
+
+  --light-grey: hsl(0, 0%, 97%);
+  --lightest-grey: hsl(0, 0%, 98%);
+  --normal-grey: hsl(240, 5%, 92%);
+  --pure-white: hsl(0, 0%, 100%);
+  --dark-header: hsl(0, 0%, 1%);
+  --grey-text: #777;
+  --dark-grey: hsl(213, 27%, 29%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.dark {
+  --background: 215 73% 16%;
+  --foreground: 0 0% 98%;
+
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+}
+
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+      overflow-x: hidden;
+    }
+
+    .down-triangle {
+      width: 0;
+      height: 0;
+      border-left: 3px solid transparent; /* Adjust width based on desired size */
+      border-right: 3px solid transparent; /* Adjust width based on desired size */
+      border-top: 3px solid var(--dark-grey); /* Adjust height and color as needed */
+    }
+    .rhombus-img {
+      width: 100%; /* Ensures image fills the container */
+      height: 100%; /* Ensures image fills the container */
+      /* transform: skewX(-45deg); Skew the image to create a rhombus */
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Clip the image into a rhombus shape */
+    }
   }
+
+  /* 0B2447 */
+  /* 5A5A5A */
+  /* F7F7F7 -- light-grey */
+  /* 36485E -- very-dark-grey */
+  /* E9E9EB --dark-grey */
+  
+/* .dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+} */
+
+.loader {
+  animation-name: loader-animation;
+  animation-duration: 4s;
+  animation-delay: 2s;
+  background: hsla(215, 73%, 16%, 0.415);
+  transform-origin: center;
+  animation-fill-mode: forwards;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes loader-animation {
+  to {
+    background: transparent;
   }
 }

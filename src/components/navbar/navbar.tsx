@@ -18,7 +18,7 @@ const Navbar = () => {
     closed: { opacity: 0, scale: 0 },
   };
   return (
-    <div className='lg:px-10 px-4 py-3 md:h-[80px] h-[60px] bg-[var(--lightest-grey)] flex items-center justify-between lg:gap-8 gap-6 z-[999] fixed top-0 w-full xl:top-[30px] xl:w-[1500px] xl:rounded-2xl'>
+    <div className='lg:px-10 px-4 py-3 md:h-[80px] h-[60px] bg-[var(--lightest-grey)] flex items-center justify-between lg:gap-8 gap-6 z-[999] fixed top-0 w-full xl:top-[30px] max-w-[100vw] xl:w-[1500px] xl:rounded-2xl'>
       <div className='flex items-center lg:gap-8 gap-6'>
         <Link href={"/"} className='flex flex-row items-center gap-1'>
           <Image src={"/images/logo.svg"} height={35} width={35} alt='logo' className='' />

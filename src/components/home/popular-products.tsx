@@ -1,6 +1,7 @@
 import { popularProducts } from "@/constants"
-import { Heart, ShoppingBag, Star } from "lucide-react"
+import { ArrowBigRightDash, Heart, ShoppingBag, Star } from "lucide-react"
 import Image from "next/image"
+import { Button } from "../ui/button"
 
 const PopularProducts = () => {
   const convertToLocalCurrency = (input: number) => {
@@ -56,6 +57,9 @@ const PopularProducts = () => {
             </div>
           ))}
         </div>
+        <Button className='flex gap-2 items-center'>
+          <span>More Products</span> <ArrowBigRightDash />
+        </Button>
       </div>
     </div>
   )

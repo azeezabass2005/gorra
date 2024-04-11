@@ -24,7 +24,7 @@ const PopularProducts = () => {
         </div>
         <div className="flex flex-wrap justify-center items-center lg:gap-5 gap-4">
           {popularProducts.map((product, index) => (
-            <div key={index} className={`bg-white shadow-sm rounded-2xl ${index > 4 ? "ss:flex hidden" : "flex"} items-center justify-between flex-col gap-3 p-4 vs:w-[260px] w-full`}>
+            <div key={index} className={`bg-white shadow-sm rounded-2xl ${index > 4 ? "ss:flex hidden" : "flex"} items-center justify-between flex-col gap-3 p-4 xs:w-[260px] w-full`}>
               <div className="flex w-full flex-row justify-between items-center">
                 <div className="flex flex-row gap-2 items-center">
                   <ShoppingBag className="h-4 w-4" />

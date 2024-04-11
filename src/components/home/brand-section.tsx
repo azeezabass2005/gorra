@@ -4,7 +4,7 @@ const BrandSection = () => {
 
 
   return (
-    <div className='bg-[var(--light-grey)] w-full sm:px-10 px-4 flex flex-col justify-center items-center sm:py-10 md:pt-72 lg:pt-10 gap-5 md:gap-8'>
+    <div className='bg-[var(--light-grey)] w-full sm:px-10 px-4 flex flex-col justify-center items-center sm:py-5 md:pt-72 lg:pt-0 gap-5 md:gap-8'>
       <div className="flex flex-col gap-1 justify-center items-center">
         <h2 className="text-[var(--dark-header)] font-semibold text-[32px]">
           Popular Brands

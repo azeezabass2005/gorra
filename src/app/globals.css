@@ -40,6 +40,7 @@
   --dark-header: hsl(0, 0%, 1%);
   --grey-text: #777;
   --dark-grey: hsl(213, 27%, 29%);
+  --gold: #ffdf00;
 
   /* marquee related */
 
@@ -106,6 +107,7 @@
   /* F7F7F7 -- light-grey */
   /* 36485E -- very-dark-grey */
   /* E9E9EB --dark-grey */
+  /* 0088EB --blue */
   
 
 .loader {

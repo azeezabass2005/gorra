@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import Loader from '../loader/loader'
 import Navbar from '../navbar/navbar'
 import HomeHero from './home-hero'
+import BrandSection from './brand-section'
+import PopularProducts from './popular-products'
 
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(true)
@@ -16,6 +18,8 @@ const HomePage = () => {
         <div className='flex flex-col justify-center items-center'>
           <Navbar />
           <HomeHero />
+          <BrandSection />
+          <PopularProducts />
         </div>
       )}
     </>

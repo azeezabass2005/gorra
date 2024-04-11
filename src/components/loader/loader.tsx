@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 const Loader = ({ setLoading }: any) => {
   const variants = {
     initial: { opacity: 1, scale: 1, backgroundColor: "transparent" },
-    animate: { opacity: 0, scale: 2.4, backgroundColor: "transparent", transition: { duration: .4, delay: .2 } },
-    exit: { opacity: 0, scale: 0, backgroundColor: "#5356FF", transition: { duration: .4 } },
+    animate: { opacity: 0, scale: 2.4, backgroundColor: "transparent", transition: { duration: 1, delay: .1 } },
+    exit: { opacity: 0, scale: 0, backgroundColor: "#5356FF", transition: { duration: .2 } },
  };
  const handleAnimationComplete = () => {
   setLoading(false)

@@ -6,6 +6,7 @@ import Navbar from '../navbar/navbar'
 import HomeHero from './home-hero'
 import BrandSection from './brand-section'
 import PopularProducts from './popular-products'
+import FeaturedProducts from './featured-products'
 
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(true)
@@ -20,6 +21,7 @@ const HomePage = () => {
           <HomeHero />
           <BrandSection />
           <PopularProducts />
+          <FeaturedProducts />
         </div>
       )}
     </>

@@ -9,6 +9,7 @@ import PopularProducts from './popular-products'
 import FeaturedProducts from './featured-products'
 import Testimonials from './testimonials'
 import Subscribe from './subscribe'
+import Footer from '../footer/footer'
 
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(true)
@@ -26,6 +27,7 @@ const HomePage = () => {
           <FeaturedProducts />
           <Testimonials />
           <Subscribe />
+          <Footer />
         </div>
       )}
     </>

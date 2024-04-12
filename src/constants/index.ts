@@ -93,3 +93,49 @@ export const testimonials = [
     testimonial: "My go-to store for all things hats! Gorra has a fantastic selection of hats for all occasions. They're always up-to-date on the latest trends, and the staff is incredibly knowledgeable. Keep up the great work!",
   },
 ];
+
+
+export const footerLinks = [
+  {
+    title: "Quick Links",
+    links: [
+      {
+        linkName: "Latest Arrivals",
+        link: "/latest-arrivals",
+      },
+      {
+        linkName: "Leather Hats",
+        link: "/leather-hats",
+      },
+      {
+        linkName: "Popular Hats",
+        link: "/popular",
+      },
+      {
+        linkName: "Base ball",
+        link: "/baseball",
+      },
+    ]
+  },
+  {
+    title: "Popular Brands",
+    links: [
+      {
+        linkName: "Nike",
+        link: "/nike",
+      },
+      {
+        linkName: "Puma",
+        link: "/puma",
+      },
+      {
+        linkName: "Adidas",
+        link: "/adidas",
+      },
+      {
+        linkName: "Versace",
+        link: "/versace",
+      },
+    ]
+  },
+]

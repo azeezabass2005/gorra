@@ -5,7 +5,7 @@ import { Bell } from 'lucide-react'
 const Subscribe = () => {
   return (
     <div className='bg-[var(--light-grey)] w-full flex flex-col justify-center items-center'>
-      <div className='flex flex-col justify-center items-center max-w-[1000px] sm:px-10 px-4 pb-24 md:gap-10 gap-8'>
+      <div className='flex flex-col justify-center items-center max-w-[1000px] sm:px-10 px-4 pb-10 md:gap-10 gap-8'>
         <div className="flex flex-col gap-1 justify-center items-center">
           <h2 className="text-[var(--dark-header)] font-semibold text-[32px]">
             Subscribe

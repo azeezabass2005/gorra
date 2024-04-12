@@ -21,10 +21,13 @@ const FeaturedProducts = () => {
             <div className="bg-[var(--dark-grey)] w-3 h-3 rounded-full min-w-3 min-h-3" />
             <div className="bg-[var(--dark-grey)] w-[50px] h-[2px] rounded-r-full" />
           </div>
+          <p className="text-[var(--grey-text)]">
+            Our products featured by reputable brands.
+          </p>
         </div>
         <div className="flex flex-wrap justify-center items-center lg:gap-5 gap-4">
           {popularProducts.map((product, index) => (
-            <div key={index} className={`bg-white shadow-sm rounded-2xl ${index > 4 ? "ss:flex hidden" : "flex"} items-center justify-between flex-col gap-3 p-4 xs:w-[260px] w-[280px]`}>
+            <div key={index} className={`bg-white shadow-sm rounded-2xl ${index > 4 ? "ss:flex hidden" : "flex"} items-center justify-between flex-col gap-3 p-4 xs:w-[280px] w-[280px]`}>
               <div className="flex w-full flex-row justify-between items-center">
                 <div className="flex flex-row gap-2 items-center">
                   <ShoppingBag className="h-4 w-4" />
@@ -38,7 +41,7 @@ const FeaturedProducts = () => {
                 </div>
               </div>
               <Image src={product.img} alt={'facecap'} width={500} height={200} className="w-[130px] h-[130px] object-contain" />
-              <div>
+              <div className="w-full flex justify-start flex-col gap-1">
                 <p className="text-[12px] text-[var(--grey-text)]">{product.category}</p>
                 <h3 className="text-[var(--dark-header)] font-semibold text-[16px]">
                 {product.name}

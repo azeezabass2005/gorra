@@ -7,6 +7,8 @@ import HomeHero from './home-hero'
 import BrandSection from './brand-section'
 import PopularProducts from './popular-products'
 import FeaturedProducts from './featured-products'
+import Testimonials from './testimonials'
+import Subscribe from './subscribe'
 
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(true)
@@ -22,6 +24,8 @@ const HomePage = () => {
           <BrandSection />
           <PopularProducts />
           <FeaturedProducts />
+          <Testimonials />
+          <Subscribe />
         </div>
       )}
     </>

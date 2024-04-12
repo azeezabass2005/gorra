@@ -60,3 +60,36 @@ export const popularProducts = [
     img: secondcap,
   },
 ]
+
+export const testimonials = [
+  {
+    name: "Sarah Jones",
+    image: firstcap, // Replace with the actual path to your image
+    testimonial: "I absolutely love my hats from Gorra! They're so stylish and well-made. I always get compliments whenever I wear them. Plus, the customer service was fantastic. I will definitely be a returning customer!",
+  },
+  {
+    name: "David Miller",
+    image: secondcap, // Replace with the actual path to your image
+    testimonial: "I was looking for a new hat for the summer and found the perfect one at Gorra. The selection was amazing, and the prices were reasonable. I'm so happy with my purchase!",
+  },
+  {
+    name: "Emily Rodriguez",
+    image: firstcap, // Replace with the actual path to your image
+    testimonial: "I wasn't sure what kind of hat to get, but the staff at Gorra was so helpful. They listened to my needs and recommended a few styles that would look great on me. I ended up buying one of their recommendations, and I love it! Thanks for the great service!",
+  },
+  {
+    name: "Michael Lee",
+    image: firstcap, // Replace with the actual path to your image
+    testimonial: "These hats are incredible! The quality is top-notch, and they fit perfectly. I've already gotten several compliments on my new favorite hat. Thanks, Gorra!",
+  },
+  {
+    name: "Aisha Johnson",
+    image: firstcap, // Replace with the actual path to your image
+    testimonial: "I love how unique the hats are at Gorra. They have something for everyone, no matter your style. I always find the perfect hat to complete my outfit. Highly recommend!",
+  },
+  {
+    name: "William Chen",
+    image: fourthcap, // Replace with the actual path to your image (headshot preferred)
+    testimonial: "My go-to store for all things hats! Gorra has a fantastic selection of hats for all occasions. They're always up-to-date on the latest trends, and the staff is incredibly knowledgeable. Keep up the great work!",
+  },
+];

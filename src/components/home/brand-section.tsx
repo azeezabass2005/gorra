@@ -14,6 +14,9 @@ const BrandSection = () => {
           <div className="bg-[var(--dark-grey)] w-3 h-3 rounded-full min-w-3 min-h-3" />
           <div className="bg-[var(--dark-grey)] w-[50px] h-[2px] rounded-r-full" />
         </div>
+        <p className="text-[var(--grey-text)]">
+          The brand of hats that are widespread.
+          </p>
       </div>
       <div className='grid rounded-2xl bg-white p-5 sm:grid-cols-6 ss:grid-cols-4 grid-cols-3 gap-6 max-w-[1000px] shadow-sm'>
         <div className="col-span-1 flex justify-center items-center">

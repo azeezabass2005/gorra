@@ -9,7 +9,7 @@ const Footer = () => {
   const date = new Date()
   const year = date.getFullYear()
   return (
-    <div className='w-full ss:text-[16px] text-[14px] flex justify-center items-center px-3 md:px-10 py-4 bg-[var(--lightest-grey)] z-[1000] text-[var(--grey-text)]'>
+    <div className='w-full ss:text-[16px] text-[14px] flex justify-center items-center px-3 md:px-10 py-4 bg-[var(--lightest-grey)] z-[10] text-[var(--grey-text)]'>
       <div className='flex flex-col w-full max-w-[1000px]'>
         <div className='flex flex-row flex-wrap items-start md:gap-16 gap-8 w-full max-w-[1000px] md:justify-between justify-center'>
           <Link href={"/"} className='flex flex-row items-center gap-1'>

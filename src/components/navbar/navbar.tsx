@@ -7,18 +7,21 @@ import { BombIcon, ChevronDown, Heart, LayoutDashboard, ShoppingBag, UserRound, 
 import { Button } from '../ui/button'
 import { Separator } from '../ui/separator'
 import { motion } from 'framer-motion'
+import { Dialog, DialogTrigger } from '../ui/dialog'
+import AuthModalWrapper from '../auth/auth-modal-wrapper'
 
 //  xl:bg-[#ffffff20] xl:backdrop-blur-lg  xl:w-[1500px] xl:top-[30px] xl:shadow-md xl:rounded-2xl
 
 const Navbar = () => {
   const [navShowing, setNavShowing] = useState(false)
   const [collectionIsShowing, setCollectionIsShowing] = useState(false)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   const collectionVariants = {
     open: { opacity: 1, scale: 1 },
     closed: { opacity: 0, scale: 0 },
   };
   return (
-    <div className='lg:px-10 px-4 py-3 md:h-[80px] h-[60px] bg-[var(--lightest-grey)] flex items-center justify-between lg:gap-8 gap-6 z-[999] fixed top-0 w-full xl:top-[30px] max-w-[100vw] xl:w-[1500px] xl:rounded-2xl'>
+    <div className='lg:px-10 px-4 py-3 md:h-[80px] h-[60px] bg-[var(--lightest-grey)] flex items-center justify-between lg:gap-8 gap-6 z-[9] fixed top-0 w-full xl:top-[30px] max-w-[100vw] xl:w-[1500px] xl:rounded-2xl'>
       <div className='flex items-center lg:gap-8 gap-6'>
         <Link href={"/"} className='flex flex-row items-center gap-1'>
           <Image src={"/images/logo.svg"} height={35} width={35} alt='logo' className='' />
@@ -46,12 +49,17 @@ const Navbar = () => {
             <Heart className='h-4 w-4 mt-5' />
           </div>
         </div>
-        <Button className='sm:flex hidden text-[var(--light-grey)] text-[14px] font-semibold bg-[var(--dark-grey)] px-3 py-1.5 rounded-2xl justify-center items-center gap-2 font'>
-          <UserRound className='sm:text-white h-4 w-4' />
-          <span className='sm:flex hidden'>
-          Login
-          </span>
-        </Button>
+        <Dialog open={modalIsOpen} onOpenChange={setModalIsOpen}>
+          <DialogTrigger>
+            <Button className='sm:flex hidden text-[var(--light-grey)] text-[14px] font-semibold bg-[var(--dark-grey)] px-3 py-1.5 rounded-2xl justify-center items-center gap-2 font'>
+              <UserRound className='sm:text-white h-4 w-4' />
+              <span className='sm:flex hidden'>
+              Login
+              </span>
+            </Button>
+          </DialogTrigger>
+          <AuthModalWrapper setModalIsOpen={setModalIsOpen} />
+        </Dialog>
     </div>
       <div className='md:hidden flex'>
         <LayoutDashboard className='h-5 w-5' onClick={() => setNavShowing((prev) => (!prev))} />
@@ -121,7 +129,7 @@ const Navbar = () => {
           <div className='flex items-end'>
             <Heart className='h-4 w-4 mt-5' />
           </div>
-          <div className='flex items-end'>
+          <div className='flex items-end' onClick={() => setModalIsOpen(true)}>
             <UserRound className='h-4 w-4 mt-5' />
           </div>
         </div>

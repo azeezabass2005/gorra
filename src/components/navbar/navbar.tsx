@@ -9,6 +9,7 @@ import { Separator } from '../ui/separator'
 import { motion } from 'framer-motion'
 import { Dialog, DialogTrigger } from '../ui/dialog'
 import AuthModalWrapper from '../auth/auth-modal-wrapper'
+import Cookies from 'js-cookie'
 
 //  xl:bg-[#ffffff20] xl:backdrop-blur-lg  xl:w-[1500px] xl:top-[30px] xl:shadow-md xl:rounded-2xl
 
@@ -49,17 +50,23 @@ const Navbar = () => {
             <Heart className='h-4 w-4 mt-5' />
           </div>
         </div>
-        <Dialog open={modalIsOpen} onOpenChange={setModalIsOpen}>
-          <DialogTrigger>
-            <span className='sm:flex hidden text-[var(--light-grey)] text-[14px] font-semibold bg-primary px-3 py-2 rounded-2xl justify-center items-center gap-2 font'>
-              <UserRound className='sm:text-white h-4 w-4' />
-              <span className='sm:flex hidden'>
-              Login
+        {Cookies.get("token") === "" || Cookies.get("token") == undefined ? (
+          <Dialog open={modalIsOpen} onOpenChange={setModalIsOpen}>
+            <DialogTrigger>
+              <span className='sm:flex hidden text-[var(--light-grey)] text-[14px] font-semibold bg-primary px-3 py-2 rounded-2xl justify-center items-center gap-2 font'>
+                <UserRound className='sm:text-white h-4 w-4' />
+                <span className='sm:flex hidden'>
+                Login
+                </span>
               </span>
-            </span>
-          </DialogTrigger>
-          <AuthModalWrapper setModalIsOpen={setModalIsOpen} />
-        </Dialog>
+            </DialogTrigger>
+            <AuthModalWrapper setModalIsOpen={setModalIsOpen} />
+          </Dialog>
+        ) : (
+          <div className='bg-white h-[34px] w-[34px] rounded-full sm:flex hidden justify-center items-center shadow-sm'>
+            <Image src={"/images/useravatar.png"} height={30} width={30} alt={"Me"} className='h-[30px] w-[30px] rounded-full' />
+          </div>
+        )}
     </div>
       <div className='md:hidden flex'>
         <LayoutDashboard className='h-5 w-5' onClick={() => setNavShowing((prev) => (!prev))} />

@@ -36,16 +36,19 @@ const AuthModalWrapper = ({ setModalIsOpen }: any) => {
           <div className='sm:basis-1/2 w-full max-w-[400px]'>
             <LoginForm />
           </div>
-          <div className='sm:flex hidden justify-center items-center basis-1/2 bg-[var(--normal-grey)] rounded-br-2xl p-10 h-full min-h-[400px]'>
-            <Image src='/images/firstcap.png' alt={"firstcap"} height={500} width={500} className={`basis-2/5 w-full`} />
+          <div className='sm:flex hidden justify-center items-center basis-1/2 rounded-br-2xl h-full min-h-[400px]'>
+            <Image src='/images/loginimg.jpg' alt={"firstcap"} height={700} width={700} className={`w-full rounded-br-2xl h-full object-cover`} />
           </div>
+          {/* <div className='sm:flex hidden justify-center items-center basis-1/2 bg-[var(--normal-grey)] rounded-br-2xl p-10 h-full min-h-[400px]'>
+            <Image src='/images/loginimg.jpg' alt={"firstcap"} height={500} width={500} className={`basis-2/5 w-full`} />
+          </div> */}
         </TabsContent>
         <TabsContent value="signup" className='flex flex-row sm:justify-between justify-center items-center gap-3'>
           <div className='sm:basis-1/2 w-full max-w-[400px]'>
             <SignupForm />
           </div>
-          <div className='sm:flex hidden justify-center items-center basis-1/2 bg-[var(--normal-grey)] rounded-br-2xl p-10 h-full min-h-[400px]'>
-            <Image src='/images/firstcap.png' alt={"firstcap"} height={500} width={500} className={`basis-2/5 w-full`} />
+          <div className='sm:flex hidden justify-center items-center basis-1/2 rounded-br-2xl h-full min-h-[400px]'>
+            <Image src='/images/loginimg.jpg' alt={"firstcap"} height={700} width={700} className={`w-full rounded-br-2xl h-full object-cover`} />
           </div>
         </TabsContent>
       </Tabs>

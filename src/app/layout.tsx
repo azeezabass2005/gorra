@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/contexts/theme-provider";
+import TanstackQueryProvider from "@/contexts/tanstack-provider";
 // import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,7 +22,9 @@ export default function RootLayout({
     <html lang="en" className="overflow-x-hidden" suppressHydrationWarning>
         <body className={inter.className}>
           <ThemeProvider>
-            {children}
+            <TanstackQueryProvider>
+              {children}
+            </TanstackQueryProvider>
           </ThemeProvider>
         </body>
     </html>

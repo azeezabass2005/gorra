@@ -16,10 +16,10 @@ import {
 import { Separator } from "../ui/separator"
 import { useLoginMutation } from "@/frameworks/use-login"
 import { useEffect } from "react"
-import { useToast } from "../ui/use-toast"
+import { toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginForm = () => {
-  const { toast } = useToast()
   const { mutate: logUserIn, data, isSuccess, isError, error } = useLoginMutation()
 
   const loginFormSchema = z.object({
@@ -44,19 +44,33 @@ const LoginForm = () => {
         console.log(`an error occured`)
         // @ts-ignore
         console.log(error?.response?.data?.message)
-        toast({
-          variant: "destructive",
-          title: "Error",
-          //@ts-ignore
-          description: error?.response?.data?.message
-        })
+        //@ts-ignore
+        toast(error?.response?.data?.message || "An error occured", {
+          type: 'error',
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
         console.log(data)
       } else if(isSuccess) {
+        toast("You are successfully logged in", {
+          type: 'success',
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light"
+          });
         console.log(`user successfully logged in`)
-        toast({
-          title: "Success",
-          description: "You are successfully logged in. ✔✔"
-        })
+        
       }
     }
     handleErrorSuccess()

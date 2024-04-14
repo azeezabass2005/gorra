@@ -34,7 +34,7 @@ const AuthModalWrapper = ({ setModalIsOpen }: any) => {
         <Separator className='my-2' />
         <TabsContent value="login" className='flex flex-row sm:justify-between justify-center items-center gap-3'>
           <div className='sm:basis-1/2 w-full max-w-[400px]'>
-            <LoginForm />
+            <LoginForm setModalIsOpen={setModalIsOpen} />
           </div>
           <div className='sm:flex hidden justify-center items-center basis-1/2 rounded-br-2xl h-full min-h-[400px]'>
             <Image src='/images/loginimg.jpg' alt={"firstcap"} height={700} width={700} className={`w-full rounded-br-2xl h-full object-cover`} />
@@ -45,7 +45,7 @@ const AuthModalWrapper = ({ setModalIsOpen }: any) => {
         </TabsContent>
         <TabsContent value="signup" className='flex flex-row sm:justify-between justify-center items-center gap-3'>
           <div className='sm:basis-1/2 w-full max-w-[400px]'>
-            <SignupForm />
+            <SignupForm setModalIsOpen={setModalIsOpen} />
           </div>
           <div className='sm:flex hidden justify-center items-center basis-1/2 rounded-br-2xl h-full min-h-[400px]'>
             <Image src='/images/loginimg.jpg' alt={"firstcap"} height={700} width={700} className={`w-full rounded-br-2xl h-full object-cover`} />

@@ -7,7 +7,6 @@ import { Button } from "../ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,12 +14,18 @@ import {
 } from "@/components/ui/form"
 import { Separator } from "../ui/separator"
 import { useLoginMutation } from "@/frameworks/use-login"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
+import Cookies from "js-cookie"
+import { CirclesWithBar } from "react-loader-spinner"
+import { EyeIcon, EyeOffIcon } from "lucide-react"
 
-const LoginForm = () => {
-  const { mutate: logUserIn, data, isSuccess, isError, error } = useLoginMutation()
+const LoginForm = ({ setModalIsOpen }: any) => {
+
+  const { mutate: logUserIn, data, isPending, isSuccess, isError, error } = useLoginMutation()
+
+  const [passwordIsShowing, setPasswordIsShowing] = useState(false)
 
   const loginFormSchema = z.object({
     email: z.string().min(3, {
@@ -58,6 +63,9 @@ const LoginForm = () => {
           });
         console.log(data)
       } else if(isSuccess) {
+        console.log(data)
+        console.log(data?.data?.token)
+        Cookies.set("token", data?.data?.token)
         toast("You are successfully logged in", {
           type: 'success',
           position: "top-right",
@@ -70,7 +78,7 @@ const LoginForm = () => {
           theme: "light"
           });
         console.log(`user successfully logged in`)
-        
+        setModalIsOpen(false)
       }
     }
     handleErrorSuccess()
@@ -107,9 +115,6 @@ const LoginForm = () => {
                 <FormControl>
                   <Input placeholder="e.g capping@gmail.com" {...field} />
                 </FormControl>
-                {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
                 <FormMessage />
               </FormItem>
             )}
@@ -118,17 +123,33 @@ const LoginForm = () => {
             control={loginForm.control}
             name="password"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="relative">
                 <FormLabel className="px-1">Password</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="password" {...field} />
+                  <Input type={passwordIsShowing ? "text" : "password"} placeholder="password" {...field} />
                 </FormControl>
+                <span className="absolute right-[20px] top-[50%] text-primary" onClick={(() => setPasswordIsShowing((prev) => (!prev)))}>
+                  {passwordIsShowing ? (<EyeOffIcon className="h-4 w-4" />) : (<EyeIcon className="h-4 w-4" />)}
+                </span>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type='submit' className='w-full flex justify-center items-center rounded-2xl mt-4'>
-            Login
+          <Button type='submit' className='w-full flex justify-center items-center rounded-2xl mt-4' disabled={isPending ? true : false}>
+            {isPending ? (
+              <CirclesWithBar
+                height="25"
+                width="25"
+                color="#ffffff"
+                outerCircleColor="#ffffff"
+                innerCircleColor="#ffffff"
+                barColor="#ffffff"
+                ariaLabel="circles-with-bar-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
+            ) : "Login" }
           </Button>
         </form>
       </Form>

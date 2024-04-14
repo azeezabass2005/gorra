@@ -15,11 +15,15 @@ import {
 } from "@/components/ui/form"
 import { Separator } from "../ui/separator"
 import { useSignupMutation } from "@/frameworks/use-signup"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import Cookies from "js-cookie"
+import { toast } from "react-toastify"
+import { EyeIcon, EyeOffIcon } from "lucide-react"
 
-const SignupForm = () => {
+const SignupForm = ({ setModalIsOpen }: any) => {
 
-  const {mutate: registerUser, isPending, isError, isSuccess} = useSignupMutation()
+  const {mutate: registerUser, isPending, data, isError, isSuccess} = useSignupMutation()
+  const [passwordIsShowing, setPasswordIsShowing] = useState(false)
 
   const signupFormSchema = z.object({
     firstName: z.string().min(3, {
@@ -48,9 +52,40 @@ const SignupForm = () => {
   useEffect(() => {
     const handleErrorSuccess = () => {
       if(isError) {
-        console.log(`An unexpected error occuredd during signup`)
+        console.log(`an error occured`)
+        // @ts-ignore
+        console.log(error?.response?.data?.message)
+        //@ts-ignore
+        toast(error?.response?.data?.message || "An error occured", {
+          type: 'error',
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+        console.log(data)
       } else if(isSuccess) {
-        console.log(`User have been successfully registered`)
+        console.log(data)
+        console.log(data?.data?.token)
+        Cookies.set("token", data?.data?.token)
+        toast("You are successfully registered", {
+          type: 'success',
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light"
+          });
+        console.log(`User successfully registered.`)
+        setModalIsOpen(false)
+        
       }
     }
     handleErrorSuccess()
@@ -130,11 +165,14 @@ const SignupForm = () => {
             control={signupForm.control}
             name="password"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="relative">
                 <FormLabel className="px-1">Password</FormLabel>
                 <FormControl>
-                  <Input type="password" placeholder="password" {...field} />
+                  <Input type={passwordIsShowing ? "text" : "password"} placeholder="password" {...field} />
                 </FormControl>
+                <span className="absolute right-[20px] top-[50%] text-primary" onClick={(() => setPasswordIsShowing((prev) => (!prev)))}>
+                  {passwordIsShowing ? (<EyeOffIcon className="h-4 w-4" />) : (<EyeIcon className="h-4 w-4" />)}
+                </span>
                 <FormMessage />
               </FormItem>
             )}

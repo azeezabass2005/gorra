@@ -51,12 +51,12 @@ const Navbar = () => {
         </div>
         <Dialog open={modalIsOpen} onOpenChange={setModalIsOpen}>
           <DialogTrigger>
-            <Button className='sm:flex hidden text-[var(--light-grey)] text-[14px] font-semibold bg-[var(--dark-grey)] px-3 py-1.5 rounded-2xl justify-center items-center gap-2 font'>
+            <span className='sm:flex hidden text-[var(--light-grey)] text-[14px] font-semibold bg-primary px-3 py-2 rounded-2xl justify-center items-center gap-2 font'>
               <UserRound className='sm:text-white h-4 w-4' />
               <span className='sm:flex hidden'>
               Login
               </span>
-            </Button>
+            </span>
           </DialogTrigger>
           <AuthModalWrapper setModalIsOpen={setModalIsOpen} />
         </Dialog>

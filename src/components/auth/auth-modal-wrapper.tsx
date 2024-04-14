@@ -14,7 +14,7 @@ const AuthModalWrapper = ({ setModalIsOpen }: any) => {
       <Tabs defaultValue='login' className='flex flex-col'>
         <div className='flex flex-row items-center justify-between'>
           <Link href={"/"} className='flex flex-row items-center gap-1'>
-            <Image src={"/images/logo.svg"} height={25} width={25} alt='logo' className='' />
+            <Image src={"/images/logo.svg"} height={28} width={28} alt='logo' className='' />
             <h2 className='font-semibold md:flex hidden'>
               Gorra
             </h2>

@@ -1,3 +1,4 @@
+"use client"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -13,8 +14,13 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Separator } from "../ui/separator"
+import { useSignupMutation } from "@/frameworks/use-signup"
+import { useEffect } from "react"
 
 const SignupForm = () => {
+
+  const {mutate: registerUser, isPending, isError, isSuccess} = useSignupMutation()
+
   const signupFormSchema = z.object({
     firstName: z.string().min(3, {
       message: "First Name can't be less that three characters."
@@ -39,8 +45,20 @@ const SignupForm = () => {
     }
   })
 
+  useEffect(() => {
+    const handleErrorSuccess = () => {
+      if(isError) {
+        console.log(`An unexpected error occuredd during signup`)
+      } else if(isSuccess) {
+        console.log(`User have been successfully registered`)
+      }
+    }
+    handleErrorSuccess()
+  }, [isError, isSuccess])
+
   const handleFormSubmit = (values: z.infer<typeof signupFormSchema>) => {
     console.log(values)
+    registerUser(values)
   }
   return (
     <div className="flex flex-col gap-2 justify-center items-center w-full">
@@ -122,7 +140,7 @@ const SignupForm = () => {
             )}
           />
           <Button type='submit' className='w-full flex justify-center items-center rounded-2xl mt-3'>
-            Login
+            Sign up
           </Button>
         </form>
       </Form>

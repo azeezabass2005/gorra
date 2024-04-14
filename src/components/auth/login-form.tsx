@@ -1,3 +1,4 @@
+"use client"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -13,8 +14,14 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Separator } from "../ui/separator"
+import { useLoginMutation } from "@/frameworks/use-login"
+import { useEffect } from "react"
+import { useToast } from "../ui/use-toast"
 
 const LoginForm = () => {
+  const { toast } = useToast()
+  const { mutate: logUserIn, data, isSuccess, isError, error } = useLoginMutation()
+
   const loginFormSchema = z.object({
     email: z.string().min(3, {
       message: "Email can't be less that three characters."
@@ -31,8 +38,33 @@ const LoginForm = () => {
     }
   })
 
+  useEffect(() => {
+    const handleErrorSuccess = () => {
+      if(isError) {
+        console.log(`an error occured`)
+        // @ts-ignore
+        console.log(error?.response?.data?.message)
+        toast({
+          variant: "destructive",
+          title: "Error",
+          //@ts-ignore
+          description: error?.response?.data?.message
+        })
+        console.log(data)
+      } else if(isSuccess) {
+        console.log(`user successfully logged in`)
+        toast({
+          title: "Success",
+          description: "You are successfully logged in. ✔✔"
+        })
+      }
+    }
+    handleErrorSuccess()
+  }, [isError, isSuccess])
+
   const handleFormSubmit = (values: z.infer<typeof loginFormSchema>) => {
     console.log(values)
+    logUserIn(values)
   }
   return (
     <div className="flex flex-col gap-2 justify-center items-center w-full">

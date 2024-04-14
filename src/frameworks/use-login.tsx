@@ -3,7 +3,9 @@ import api from "@/api/api"
 
 const handleLogin = async (inputData: any) => {
   console.log(inputData)
-  const response = await api.post("/login", inputData)
+  console.log("reached the login function")
+  const response = await api.post("/auth/login", inputData)
+  console.log(response)
   return response
 }
 

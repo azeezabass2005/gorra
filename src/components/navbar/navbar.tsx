@@ -3,13 +3,15 @@ import React, { useState } from 'react'
 import NavMenu from './menu-bar'
 import Link from 'next/link'
 import SearchBar from './search-bar'
-import { BombIcon, ChevronDown, Heart, LayoutDashboard, ShoppingBag, UserRound, X } from 'lucide-react'
+import { BombIcon, ChevronDown, Heart, LayoutDashboard, LogOutIcon, ShoppingBag, UserRound, X } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Separator } from '../ui/separator'
 import { motion } from 'framer-motion'
 import { Dialog, DialogTrigger } from '../ui/dialog'
 import AuthModalWrapper from '../auth/auth-modal-wrapper'
 import Cookies from 'js-cookie'
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
+import { useRouter } from 'next/navigation'
 
 //  xl:bg-[#ffffff20] xl:backdrop-blur-lg  xl:w-[1500px] xl:top-[30px] xl:shadow-md xl:rounded-2xl
 
@@ -17,10 +19,24 @@ const Navbar = () => {
   const [navShowing, setNavShowing] = useState(false)
   const [collectionIsShowing, setCollectionIsShowing] = useState(false)
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [userPopoverIsOpen, setUserPopoverIsOpen] = useState(false)
+  //@ts-ignore
+  const roles = Cookies.get("roles") !== undefined ? JSON.parse(Cookies.get("roles")) : []
+  console.log(roles)
   const collectionVariants = {
     open: { opacity: 1, scale: 1 },
     closed: { opacity: 0, scale: 0 },
   };
+
+  const router = useRouter()
+  const handleLogout = () => {
+    console.log("Logout button clicked")
+    Cookies.remove("token")
+    Cookies.remove("roles")
+    setUserPopoverIsOpen(false)
+    router.replace("/")
+  }
+
   return (
     <div className='lg:px-10 px-4 py-3 md:h-[80px] h-[60px] bg-[var(--lightest-grey)] flex items-center justify-between lg:gap-8 gap-6 z-[9] fixed top-0 w-full xl:top-[30px] max-w-[100vw] xl:w-[1500px] xl:rounded-2xl'>
       <div className='flex items-center lg:gap-8 gap-6'>
@@ -30,7 +46,7 @@ const Navbar = () => {
             Gorra
           </h2>
         </Link>
-        <NavMenu />
+        <NavMenu roles={roles} />
       </div>
       <div className='flex items-center lg:gap-8 sm:gap-6 gap-4 h-full'>
         <SearchBar />
@@ -63,9 +79,22 @@ const Navbar = () => {
             <AuthModalWrapper setModalIsOpen={setModalIsOpen} />
           </Dialog>
         ) : (
-          <div className='bg-white h-[34px] w-[34px] rounded-full sm:flex hidden justify-center items-center shadow-sm'>
-            <Image src={"/images/useravatar.png"} height={30} width={30} alt={"Me"} className='h-[30px] w-[30px] rounded-full' />
-          </div>
+          <Popover open={userPopoverIsOpen} onOpenChange={setUserPopoverIsOpen}>
+            <PopoverTrigger>
+              <span className='bg-white h-[34px] w-[34px] rounded-full sm:flex hidden justify-center items-center shadow-sm'>
+                <Image src={"/images/useravatar.png"} height={30} width={30} alt={"Me"} className='h-[30px] w-[30px] rounded-full' />
+              </span>
+            </PopoverTrigger>
+            <PopoverContent className="flex flex-col gap-2 px-5">
+              <div>
+                Profile
+              </div>
+              <Separator />
+              <div className='text-destructive cursor-pointer flex items-center gap-2' onClick={() => handleLogout()}>
+                Logout <LogOutIcon className='h-3 w-4' />
+              </div>
+            </PopoverContent>
+          </Popover>
         )}
     </div>
       <div className='md:hidden flex'>
@@ -112,6 +141,11 @@ const Navbar = () => {
                 <Link href={"/about-us"} className='bg-[var(--lightest-grey)] px-4 py-2.5 rounded-2xl'>
                   About Us
                 </Link>
+                {roles.includes("Admin") && (
+                  <Link href={"/about-us"} className='bg-[var(--lightest-grey)] px-4 py-2.5 rounded-2xl'>
+                  Admin Dashboard
+                </Link>
+                )}
               </div>
               <div className="bg-[var(--normal-grey)] rounded-lg flex justify-center items-center p-5">
                 <Image src={"/images/firstcap.png"} alt={'facecap'} width={500} height={200} className="w-[200px] h-[200px] object-contain" />

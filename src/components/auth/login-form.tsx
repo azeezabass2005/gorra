@@ -66,6 +66,7 @@ const LoginForm = ({ setModalIsOpen }: any) => {
         console.log(data)
         console.log(data?.data?.token)
         Cookies.set("token", data?.data?.token)
+        Cookies.set("roles", JSON.stringify(data?.data?.user?.role))
         toast("You are successfully logged in", {
           type: 'success',
           position: "top-right",

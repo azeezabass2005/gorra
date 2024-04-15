@@ -54,7 +54,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-const NavMenu = () => {
+const NavMenu = ({ roles }: any) => {
   return (
     <NavigationMenu className="md:flex hidden">
       <NavigationMenuList>
@@ -92,6 +92,13 @@ const NavMenu = () => {
               About Us
             </NavigationMenuLink>
           </Link>
+          {roles.includes("Admin") && (
+            <Link href="/dashboard" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Admin Dashboard
+              </NavigationMenuLink>
+            </Link>
+          )}
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

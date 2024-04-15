@@ -170,9 +170,15 @@ const Navbar = () => {
           <div className='flex items-end'>
             <Heart className='h-4 w-4 mt-5' />
           </div>
-          <div className='flex items-end' onClick={() => setModalIsOpen(true)}>
-            <UserRound className='h-4 w-4 mt-5' />
-          </div>
+          {Cookies.get("token") == "" || Cookies.get("token") == undefined ? (
+            <span className='flex items-end' onClick={() => setModalIsOpen(true)}>
+              <UserRound className='h-4 w-4 mt-5' />
+            </span>
+          ) : (
+            <Link href={"/profile"} className='flex items-end' onClick={() => setModalIsOpen(true)}>
+              <UserRound className='h-4 w-4 mt-5' />
+            </Link>
+          )}
         </div>
       </div>
     </div>

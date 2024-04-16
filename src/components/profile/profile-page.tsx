@@ -6,6 +6,8 @@ import Navbar from '../navbar/navbar'
 
 import Footer from '../footer/footer'
 
+import ProfileContent from './profile-content'
+
 const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -16,9 +18,7 @@ const HomePage = () => {
       ) : (
         <div className='flex flex-col justify-center items-center'>
           <Navbar />
-          <div className='w-full min-h-[90vh] flex justify-center items-center bg-[var(--light-grey)]'>
-            This is the profile page
-          </div>
+          <ProfileContent />
           <Footer />
         </div>
       )}
@@ -27,14 +27,3 @@ const HomePage = () => {
 }
 
 export default HomePage
-// return (
-//   <>
-//     {loading ? (
-//       <Loader setLoading={setLoading} />
-//     ) : (
-//       <div>
-//         <Navbar />
-//       </div>
-//     )}
-//   </>
-// )

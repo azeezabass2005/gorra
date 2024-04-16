@@ -12,8 +12,7 @@ import AuthModalWrapper from '../auth/auth-modal-wrapper'
 import Cookies from 'js-cookie'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { useRouter } from 'next/navigation'
-
-//  xl:bg-[#ffffff20] xl:backdrop-blur-lg  xl:w-[1500px] xl:top-[30px] xl:shadow-md xl:rounded-2xl
+import { toast } from 'react-toastify'
 
 const Navbar = () => {
   const [navShowing, setNavShowing] = useState(false)
@@ -35,6 +34,9 @@ const Navbar = () => {
     Cookies.remove("roles")
     setUserPopoverIsOpen(false)
     router.replace("/")
+    toast("You successfully logged out", {
+      type: "error"
+    })
   }
 
   return (

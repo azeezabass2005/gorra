@@ -88,9 +88,9 @@ const Navbar = () => {
               </span>
             </PopoverTrigger>
             <PopoverContent className="flex flex-col gap-2 px-5">
-              <div>
+              <Link href={"/profile"}>
                 Profile
-              </div>
+              </Link>
               <Separator />
               <div className='text-destructive cursor-pointer flex items-center gap-2' onClick={() => handleLogout()}>
                 Logout <LogOutIcon className='h-3 w-4' />

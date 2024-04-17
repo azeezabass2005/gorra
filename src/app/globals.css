@@ -34,8 +34,8 @@
   --radius: 0.5rem;
 
   --light-grey: hsl(0, 0%, 97%);
-  --lightest-grey: hsl(0, 0%, 98%);
-  --normal-grey: hsl(240, 5%, 92%);
+  --lightest-grey: #fafafa;
+  --normal-grey: #eaeaec;
   --pure-white: hsl(0, 0%, 100%);
   --dark-header: hsl(0, 0%, 1%);
   --grey-text: #777;

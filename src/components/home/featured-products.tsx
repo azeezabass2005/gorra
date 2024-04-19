@@ -2,12 +2,10 @@ import { popularProducts } from "@/constants"
 import { ArrowBigRightDash, Heart, ShoppingBag, Star } from "lucide-react"
 import Image from "next/image"
 import { Button } from "../ui/button"
+import { convertToLocalCurrency } from "@/utils"
 
 const FeaturedProducts = () => {
-  const convertToLocalCurrency = (input: number) => {
-    const inCurrencyForm = input.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })
-    return inCurrencyForm
-  }
+  
 
   return (
     <div className='bg-[var(--light-grey)] w-full flex flex-col justify-center items-center'>

@@ -4,7 +4,6 @@ import NavMenu from './menu-bar'
 import Link from 'next/link'
 import SearchBar from './search-bar'
 import { BombIcon, ChevronDown, Heart, LayoutDashboard, LogOutIcon, ShoppingBag, UserRound, X } from 'lucide-react'
-import { Button } from '../ui/button'
 import { Separator } from '../ui/separator'
 import { motion } from 'framer-motion'
 import { Dialog, DialogTrigger } from '../ui/dialog'
@@ -12,7 +11,7 @@ import AuthModalWrapper from '../auth/auth-modal-wrapper'
 import Cookies from 'js-cookie'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { useRouter } from 'next/navigation'
-import { toast } from 'react-toastify'
+import { handleLogout } from '@/utils'
 
 const Navbar = () => {
   const [navShowing, setNavShowing] = useState(false)
@@ -28,16 +27,6 @@ const Navbar = () => {
   };
 
   const router = useRouter()
-  const handleLogout = () => {
-    console.log("Logout button clicked")
-    Cookies.remove("token")
-    Cookies.remove("roles")
-    setUserPopoverIsOpen(false)
-    router.replace("/")
-    toast("You successfully logged out", {
-      type: "error"
-    })
-  }
 
   return (
     <div className='lg:px-10 px-4 py-3 md:h-[80px] h-[60px] bg-[var(--lightest-grey)] flex items-center justify-between lg:gap-8 gap-6 z-[9] fixed top-0 w-full xl:top-[30px] max-w-[100vw] xl:w-[1500px] xl:rounded-2xl'>
@@ -92,7 +81,7 @@ const Navbar = () => {
                 Profile
               </Link>
               <Separator />
-              <div className='text-destructive cursor-pointer flex items-center gap-2' onClick={() => handleLogout()}>
+              <div className='text-destructive cursor-pointer flex items-center gap-2' onClick={() => handleLogout(setUserPopoverIsOpen, router)}>
                 Logout <LogOutIcon className='h-3 w-4' />
               </div>
             </PopoverContent>

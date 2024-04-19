@@ -1,30 +1,15 @@
-import { ArrowBigRightDash, Delete, Edit, Edit2, Edit2Icon, Edit3, Heart, LogOut, PlusCircleIcon, ShoppingBag, Star, Trash2 } from 'lucide-react'
+import { ArrowBigRightDash, Edit, Edit2Icon, Edit3, Heart, LogOut, PlusCircleIcon, ShoppingBag, Star, Trash2 } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
-import { Dialog } from '../ui/dialog'
 import { popularProducts } from '@/constants'
 import { useRouter } from "next/navigation"
-import Cookies from "js-cookie"
-import { toast } from "react-toastify"
+import { handleLogout } from '@/utils'
+import { convertToLocalCurrency } from '@/utils'
 
 const ProfileContent = () => {
 
-  const convertToLocalCurrency = (input: number) => {
-    const inCurrencyForm = input.toLocaleString('en-NG', { style: 'currency', currency: 'NGN' })
-    return inCurrencyForm
-  }
-
   const router = useRouter()
-  const handleLogout = () => {
-    console.log("Logout button clicked")
-    Cookies.remove("token")
-    Cookies.remove("roles")
-    router.replace("/")
-    toast("You successfully logged out", {
-      type: "success"
-    })
-  }
 
   return (
     <div className='w-full flex flex-col gap-8 sm:gap-10 justify-center items-center px-10 md:pt-32 pt-20 pb-20'>
@@ -157,7 +142,7 @@ const ProfileContent = () => {
           </div>
         </div>
         <div className='rounded-2xl flex flex-col h-full justify-center items-center col-span-1 bg-white'>
-          <button className='px-4 py-2 rounded-2xl flex items-center justify-between w-fit gap-3 bg-destructive text-white' onClick={() => handleLogout()}>
+          <button className='px-4 py-2 rounded-2xl flex items-center justify-between w-fit gap-3 bg-destructive text-white' onClick={() => handleLogout(null, router)}>
             Logout <LogOut className='h-3 w-4' />
           </button>
         </div>

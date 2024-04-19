@@ -22,7 +22,7 @@ const ProfileContent = () => {
     Cookies.remove("roles")
     router.replace("/")
     toast("You successfully logged out", {
-      type: "error"
+      type: "success"
     })
   }
 
@@ -157,7 +157,7 @@ const ProfileContent = () => {
           </div>
         </div>
         <div className='rounded-2xl flex flex-col h-full justify-center items-center col-span-1 bg-white'>
-          <button className='px-4 py-2 rounded-2xl flex items-center justify-between w-fit gap-3 bg-destructive text-white'>
+          <button className='px-4 py-2 rounded-2xl flex items-center justify-between w-fit gap-3 bg-destructive text-white' onClick={() => handleLogout()}>
             Logout <LogOut className='h-3 w-4' />
           </button>
         </div>

@@ -1,9 +1,10 @@
+import DashboardContent from '@/components/dashboard/dashboard-content'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>
-      This is the dashboard
+    <div className='w-full'>
+      <DashboardContent />
     </div>
   )
 }

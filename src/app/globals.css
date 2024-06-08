@@ -33,13 +33,13 @@
 
   --radius: 0.5rem;
 
-  --light-grey: hsl(0, 0%, 97%);
-  --lightest-grey: #fafafa;
+  --light-grey: #f7f7f7;
+  --lightest-grey: rgb(250, 250, 250);
   --normal-grey: #eaeaec;
   --pure-white: hsl(0, 0%, 100%);
   --dark-header: hsl(0, 0%, 1%);
   --grey-text: #777;
-  --dark-grey: hsl(213, 27%, 29%);
+  --dark-grey: #36485e;
   --gold: #ffdf00;
 
   /* marquee related */
@@ -117,6 +117,10 @@
   background: hsla(215, 73%, 16%, 0.415);
   transform-origin: center;
   animation-fill-mode: forwards;
+}
+
+.chart-container canvas {
+  background-color: transparent;
 }
 
 @keyframes loader-animation {
